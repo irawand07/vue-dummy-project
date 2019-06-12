@@ -10,13 +10,13 @@ export default new Router({
       path: "/",
       name: "login",
       meta: { layout: "login" },
-      component: require("@/views/Login.vue").default // load sync home
+      component: require("@/views/Login.vue").default // first load
     },
     {
       path: "/login",
       name: "login",
       meta: { layout: "login" },
-      component: require("@/views/Login.vue").default // load sync home
+      component: require("@/views/Login.vue").default // first load
     },
     {
       path: "/home",
@@ -26,6 +26,7 @@ export default new Router({
     {
       path: "/about",
       name: "about",
+      meta: { layout: "no-footer" },
       component: () => import("@/views/About.vue")
     }
   ]
