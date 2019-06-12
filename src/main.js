@@ -4,10 +4,12 @@ import router from "./router";
 import store from "./store";
 
 import Default from "./layouts/Default.vue";
-import NoSidebar from "./layouts/NoSidebar.vue";
+import NoSidebar from "./layouts/NoSidebarLayout.vue";
+import Login from "./layouts/LoginLayout.vue";
 
 Vue.component("default-layout", Default);
 Vue.component("no-sidebar-layout", NoSidebar);
+Vue.component("login-layout", Login);
 
 Vue.config.productionTip = false;
 
