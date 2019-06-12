@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar is-light">
-    <router-link class="" to="/" aria-label="Home" title="Home">
+    <router-link class="" to="/home" aria-label="Home" title="Home">
       <span class="menu-label">Home</span>
     </router-link>
     &nbsp;&nbsp;
@@ -22,12 +22,6 @@ export default {
       username : 'Auth/username',
     })
   },
-  data: function () {
-    return {
-      toggled: false,
-      isHidden: false
-    }
-  },
   methods:{
     ...mapActions({
        removeAuth : 'Auth/remove',
@@ -42,12 +36,12 @@ export default {
   },
   mounted(){
     // sementara dinonaktifkan karena api belum aktif agar bisa dirct access.
-    // var token = this.$cookie.get('token')
-    // if(token == null || token == undefined){
-    //    router.replace({
-    //       path: '/login',
-    //    })
-    // }
+    var token = this.$cookie.get('token')
+    if(token == null || token == undefined){
+       router.replace({
+          path: '/login',
+       })
+    }
   }
 };
 </script>
