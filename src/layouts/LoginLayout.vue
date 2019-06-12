@@ -10,7 +10,6 @@ export default {
 
 <template>
   <div>
-    <nav-bar />
 
     <div class="container">
       <slot />

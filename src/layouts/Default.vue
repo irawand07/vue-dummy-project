@@ -19,15 +19,17 @@
 </template>
 
 <script>
-import NavBar from "@/components/NavBar";
-import SideBar from "@/components/SideBar";
-import FooterBar from "@/components/FooterBar";
+  import NavBar from "@/components/NavBar";
+  import SideBar from "@/components/SideBar";
+  import FooterBar from "@/components/FooterBar";
 
-export default {
-  components: {
-    NavBar,
-    SideBar,
-    FooterBar
+  export default {
+    name: 'Default',
+    components: {
+      NavBar,
+      SideBar,
+      FooterBar
+    }
   }
-};
+
 </script>

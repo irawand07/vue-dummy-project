@@ -4,12 +4,24 @@ import Router from "vue-router";
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: "/",
+      name: "login",
+      meta: { layout: "login" },
+      component: require("@/views/Login.vue").default // load sync home
+    },
+    {
+      path: "/login",
+      name: "login",
+      meta: { layout: "login" },
+      component: require("@/views/Login.vue").default // load sync home
+    },
+    {
+      path: "/home",
       name: "home",
-      meta: { layout: "no-sidebar" },
-      component: require("@/views/Home.vue").default // load sync home
+      component: () => import("@/views/Home.vue")
     },
     {
       path: "/about",
