@@ -24,6 +24,10 @@ npm run test
 ```
 npm run lint
 ```
+### User password
+```
+coba | coba
+```
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
