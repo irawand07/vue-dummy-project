@@ -11,6 +11,7 @@
 <script>
 import { mapActions } from 'vuex'
 import router from '@/router'
+import {Api} from '@/services/Api'
 export default {
    name: 'login',
    components:{
@@ -28,14 +29,23 @@ export default {
          setAuth : 'Auth/set',
       }),
       async postNow(){
-         console.log('sdsds');
-         if(this.password == 'coba' && this.email == "coba"){
-            this.$cookie.set('token', "token_coba", { expires: '30m' })
-            router.replace({
-               path: '/home',
-            })
-         }
+        let formData = {
+          "user":this.email,
+          "password":this.password
+        }
 
+        let response =   await Api.post('login.php',formData)
+        if(response.status == "fail"){
+          this.login = true
+          this.pesan = response.message
+        }else{
+          this.$cookie.set('token', response.auth_token, { expires: '30m' })
+          let detailUser = await Api.get('status',{"token":response.auth_token})
+          this.setAuth(detailUser.data)
+          router.replace({
+            path: '/home',
+          })
+        }
 
       }
    },
