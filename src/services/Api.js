@@ -20,11 +20,17 @@ export const Api = {
          })
          .then(response => Promise.resolve(response.data))
          .catch(function(error){
-            if(error.response.status === 401 ){
+            if(error.response != undefined && error.response.status === 401 ){
                router.replace({
                   path: '/login'
                })
+            }else if(error.response != undefined && error.status != undefined){
+               var pesan = "Network Error : "+error.status+" => "+error.response
+               alert(pesan)
+            }else{
+               alert('Network Error : Cross-Origin Request Blocked or Other Reason.')
             }
+            Promise.reject(error)
          })
 
       return response;
