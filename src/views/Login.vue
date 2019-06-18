@@ -30,18 +30,18 @@ export default {
       }),
       async postNow(){
         let formData = {
-          "user":this.email,
+          "email":this.email,
           "password":this.password
         }
 
-        let response =   await Api.post('login.php',formData)
+        let response =   await Api.post('login',formData)
         if(response.status == "fail"){
           this.login = true
           this.pesan = response.message
         }else{
           this.$cookie.set('token', response.auth_token, { expires: '30m' })
-          let detailUser = await Api.get('status',{"token":response.auth_token})
-          this.setAuth(detailUser.data)
+          // let detailUser = await Api.get('status',{"token":response.auth_token})
+          // this.setAuth(detailUser.data)
           router.replace({
             path: '/home',
           })
